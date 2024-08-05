@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name = "org.zorba_1015.Student" table = "Student" >
+        <id name = "StudentId" column = "student_id" >
+            <generator class = "native"/>
+        </id>
+        <property  name = "studentName" column = "stud_name"/>
+        <property name="rollNumber" column="stud_roll_number"/>
+        <many-to-one name ="subject" column = "subject_id" class ="org.zorba_1015.Subject"/>
+    </class>
+</hibernate-mapping>

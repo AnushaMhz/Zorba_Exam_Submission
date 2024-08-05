@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name = "org.zorba_1015.Teacher"  table = "teacher">
+        <id name = "teacherId" column = "teacher_id">
+            <generator class = "native"/>
+        </id>
+        <property name = "teacherName" column = "teacher_name"/>
+        <property name="teacherQualification" column="teacher_qualification"/>
+        <property name="experienceOfTeaching" column="experience_of_Teaching"/>
+        <many-to-use name="subject" column = "subject_id" class = "org.zorba_1015.Subject"/>
+
+     </class>
+</hibernate-mapping>
