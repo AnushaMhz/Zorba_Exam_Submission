@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" default-init-method="init" default-destroy-method="destroy">
+
+
+    <!-- RentOfFlat Bean -->
+    <bean id = "rentOfOneBHKFlat" class  ="org.example.RentOfOneBHKFlat"/>
+    <bean id = "rentOfTwoBHKFlat"  class ="org.example.RentOfTwoBHKFlat">
+        <property name = "balcony" value = "Balcony Included">
+
+        </property>
+    </bean>
+    <bean id = "rentOfThreeBHKFlat" class ="org.example.RentOfThreeBHKFlat">
+        <property name = "balcony" value = "Balcony Included"/>
+    </bean>
+
+    <!-- SelfOwnedFlat Bean -->
+    <bean id = "selfOwnedOneBHKFlat" class ="org.example.SelfOwnedOneBHKFlat" autowire ="byType"/>
+    <bean id = "selfOwnedTwoBHKFlat" class ="org.example.SelfOwnedTwoBHKFlat" autowire="byType"/>
+    <bean id = "selfOwnedThreeBHKFlat" class ="org.example.SelfOwnedThreeBHKFlat" autowire="byType"/>
+
+    <bean id = "propertyRent" class ="org.example.RentOfFlat" abstract = "true"/>
+    <bean id = "propertySelfOwned" class="org.example.SelfOwnedFlat" abstract="true"/>
+
+</beans>
+
