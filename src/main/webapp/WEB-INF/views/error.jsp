@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
+<head>
+    <title>Error Details</title>
+</head>
 <body>
-<h2>Hello World!</h2>
+<p>${exceptionDetails}</p>
 </body>
 </html>
