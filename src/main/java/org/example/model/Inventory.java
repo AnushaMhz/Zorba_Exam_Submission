@@ -14,11 +14,20 @@ public class Inventory {
     private double price;
     private String image;
     private String description;
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private InventoryCategory category;
+    private String category;
 
     public int getInventoryId() {
         return inventoryId;
@@ -68,11 +77,11 @@ public class Inventory {
         this.description = description;
     }
 
-    public InventoryCategory getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(InventoryCategory category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 }

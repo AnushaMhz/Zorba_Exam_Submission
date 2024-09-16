@@ -13,9 +13,10 @@ import java.util.List;
 @Transactional
 public class UserInfoDAO {
 
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
     @Autowired
     public UserInfoDAO(SessionFactory sessionFactory) {
+
         this.sessionFactory = sessionFactory;
     }
     public void saveUserInfo(UserInfo userInfo) {

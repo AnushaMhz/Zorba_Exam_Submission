@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.controller.UserInfoController;
 import org.example.dao.UserInfoDAO;
 import org.example.model.Role;
 import org.example.model.UserInfo;
@@ -11,17 +12,29 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
 public class UserInfoService {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    private  EntityManager entityManager;
 
     @Autowired
     private SessionFactory sessionFactory;
     private UserInfoDAO userInfoDAO;
+    private UserInfoController userInfoController;
+
+    @Transactional
+    public void deleteUserInfos(long userId) {
+        UserInfo userInfo = entityManager.find(UserInfo.class, userId);
+        if (userInfo != null) {
+            entityManager.remove(userId);
+        } else {
+            throw new RuntimeException("User not found with Id: " + userId);
+        }
+    }
 
     @Transactional
     public void saveUserInfo(UserInfo userInfo) throws Exception {
@@ -55,8 +68,8 @@ public class UserInfoService {
         return password != null && password.length() >= 8;
     }
 
-    public List<UserInfo> getAllUsers() {
-        return userInfoDAO.getAllUsers();
+    public static List<UserInfo> getAllUsers() {
+        return getAllUsers();
     }
 
     public UserInfo getUserById(int userId) {
@@ -85,5 +98,6 @@ public class UserInfoService {
     public List<Role> getAllRoles() {
         return entityManager.createQuery("SELECT r FROM Role r", Role.class).getResultList();
     }
+
 
 }

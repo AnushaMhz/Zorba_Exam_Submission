@@ -31,7 +31,5 @@ public class VendorController {
         }else {
             return "errorPage";
         }
-
-
     }
 }
