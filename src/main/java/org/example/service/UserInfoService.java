@@ -12,7 +12,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,7 +26,7 @@ public class UserInfoService {
     private UserInfoController userInfoController;
 
     @Transactional
-    public void deleteUserInfos(long userId) {
+    public void deleteUserInfo(long userId) {
         UserInfo userInfo = entityManager.find(UserInfo.class, userId);
         if (userInfo != null) {
             entityManager.remove(userId);

@@ -4,10 +4,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Upload Excel File</title>
+    <title>Admin Dashboard</title>
 </head>
 <body>
-<h2>Customer Information</h2>
+<h2> User Information</h2>
 <table>
     <tr>
         <th>ID</th>
@@ -15,12 +15,12 @@
         <th>Email</th>
         <th>Action</th>
     </tr>
-    <c:forEach var="userInfos" items="${userInfos}">
+    <c:forEach var="userInfo" items="${userInfo}">
         <tr>
-            <td>${customer.id}</td>
-            <td>${customer.name}</td>
-            <td>${customer.email}</td>
-            <td><a href="removeUser?id=${user.id}">Remove</a></td>
+            <td>${userInfo.id}</td>
+            <td>${userInfo.name}</td>
+            <td>${userInfo.email}</td>
+            <td><a href="removeUser?id=${userInfo.id}">Remove</a></td>
         </tr>
     </c:forEach
     <a href="${pageContext.request.contextPath}/inventory">View Inventory Details</a>

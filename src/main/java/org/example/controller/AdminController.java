@@ -4,6 +4,7 @@ import org.example.model.Inventory;
 import org.example.model.UserInfo;
 import org.example.service.InventoryService;
 import org.example.service.UserInfoService;
+import org.example.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ public class AdminController {
     @Autowired
     private UserInfoService userInfoService;
     private InventoryService inventoryService;
+    private VendorService vendorService;
 
     @PostMapping("/adminLogin")
     public String adminLogin(@RequestParam("username")String username,
@@ -38,16 +40,22 @@ public class AdminController {
         }
 
         }
-    @GetMapping("/removeUserInfos")
-    public String removeUserInfos(@RequestParam("user_id") long user_id, Model model) {
+    @GetMapping("/removeUserInfo")
+    public String removeUserInfo(@RequestParam("user_id") long user_id, Model model) {
 
         try {
-            userInfoService.deleteUserInfos(user_id);  // Call the method using EntityManager
+            userInfoService.deleteUserInfo(user_id);  // Call the method using EntityManager
         } catch (RuntimeException e) {
             model.addAttribute("error", e.getMessage());
         }
 
         // Redirect back to the admin dashboard to see updated data
+        return "redirect:/adminDashboard";
+    }
+
+    @GetMapping("/deleteVendor")
+    public String deleteVendor(@RequestParam("vendor") String vendor) {
+        vendorService.deleteVendor(vendor);
         return "redirect:/adminDashboard";
     }
 
