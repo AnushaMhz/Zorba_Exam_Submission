@@ -1,18 +1,29 @@
 package org.example.config;
 
 import org.hibernate.SessionFactory;
+
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
+@EnableTransactionManagement
+@ComponentScan(basePackages = "org.example")
 public class HibernateConfig {
 
+
+    @Bean
+    public SessionFactory sessionFactory() {
+        return new org.hibernate.cfg.Configuration().configure().buildSessionFactory();
+    }
     @Bean
     public LocalSessionFactoryBean sessionFactoryBean(DataSource dataSource) {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();

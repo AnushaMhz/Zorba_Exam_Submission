@@ -19,8 +19,11 @@ public class AdminController {
 
     @Autowired
     private UserInfoService userInfoService;
+    @Autowired
     private InventoryService inventoryService;
+    @Autowired
     private VendorService vendorService;
+
 
     @PostMapping("/adminLogin")
     public String adminLogin(@RequestParam("username")String username,
@@ -61,7 +64,7 @@ public class AdminController {
 
     @GetMapping("/inventory")
     public String showInventoryDetails(Model model) {
-        List<Inventory> inventoryList =inventoryService.getAllInventory();
+        List<Inventory> inventoryList =inventoryService.findAll();
         model.addAttribute("inventoryList", inventoryList);
 
         return "inventory";

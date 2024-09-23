@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -16,13 +17,13 @@ public class VendorController {
     @Autowired
     private UserInfoService userInfoService;
 
-    @GetMapping("/login")
+    @RequestMapping(value = "/vendorLogin", method = RequestMethod.POST)
     public String vendorLogin(@RequestParam("username")String username,
                               @RequestParam("password") String password,
                               @RequestParam("role") String role,
                                 Model model) {
         if(!"Vendor".equals(role)) {
-            return "errorPage";
+            return "redirect:/inventory";
         }
 
         UserInfo userInfo = userInfoService.getUserByUsernameAndPassword(username,password);

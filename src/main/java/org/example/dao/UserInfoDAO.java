@@ -8,17 +8,24 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Properties;
 
 @Repository
 @Transactional
 public class UserInfoDAO {
 
-    private final SessionFactory sessionFactory;
     @Autowired
-    public UserInfoDAO(SessionFactory sessionFactory) {
+    private final SessionFactory sessionFactory;
 
+    public UserInfoDAO(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
+
+    /* @Autowired
+     public UserInfoDAO(SessionFactory sessionFactory) {
+
+         this.sessionFactory = sessionFactory;
+     }*/
     public void saveUserInfo(UserInfo userInfo) {
         sessionFactory.getCurrentSession().save(userInfo);
 
@@ -41,5 +48,9 @@ public class UserInfoDAO {
 
     public void saveRole(Role role) {
         sessionFactory.getCurrentSession().saveOrUpdate(role);
+    }
+
+    public Properties getCurrentSession() {
+        return null;
     }
 }

@@ -71,11 +71,42 @@
       <artifactId>hibernate-core</artifactId>
       <version>5.6.15.Final</version>
     </dependency>
+    <!-- Spring Boot Starter for Spring Data JPA -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
 
+    <!-- H2 Database for testing (optional) -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- MySQL Connector (or any other database you are using) -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Hibernate Core for JPA implementation -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>5.6.9.Final</version> <!-- Ensure you use the appropriate version -->
+    </dependency>
+
+    <!-- Spring Boot Starter for Web (if you're using Spring MVC) -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
-      <version>4.3.5.Final</version>
+      <version>5.6.6.Final</version>
     </dependency>
 
     <!-- Apache Commons DBCP -->
